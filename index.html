@@ -3,35 +3,142 @@
 <html>
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" id='jQMnDColor' />
-  <link rel="stylesheet" href="css/sgh.css" id='jQMnDColor' />
 
   <script src= "http://code.jquery.com/jquery-1.10.2.min.js"></script>
-  <script src= "http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
-  
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.3.13/d3.min.js" charset="utf-8"></script>
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
+  <script src='//api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
+  <script type="text/javascript" src="/leaflet.usermarker.js"></script>
 
-  <!-- <script src="sdoh.data"></script> -->
-  <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.6/firebase.js'></script>
+<style>
+
+#map_holder {
+    width: 1000px;
+    height: 1000px;
+    overflow: hidden;
+}
+
   
+#my_arbitrary_id {
+    padding: 1%;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+/*leaflet user marker*/
+@-moz-keyframes leaflet-usermarker-pulsate {
+    from {
+        -moz-transform: scale(0.5);
+        opacity: 1.0;
+    }
+    95% {
+        -moz-transform: scale(1.3);
+        opacity: 0;
+    }
+    to {
+        -moz-transform: scale(0.7);
+        opacity: 0;
+    }
+}
+@-webkit-keyframes leaflet-usermarker-pulsate {
+    from {
+        -webkit-transform: scale(0.5);
+        opacity: 1.0;
+    }
+    95% {
+        -webkit-transform: scale(1.3);
+        opacity: 0;
+    }
+    to {
+        -webkit-transform: scale(0.7);
+        opacity: 0;
+    }
+}
+
+.leaflet-usermarker,
+.leaflet-usermarker-small {
+    width: 34px;
+    height: 34px;
+    background: url(img/bluedot.png);
+    background-size: 100%;
+}
+.leaflet-usermarker-small {
+    width: 18px;
+    height: 18px;
+}
+
+.leaflet-usermarker i.pulse,
+.leaflet-usermarker-small i.pulse {
+    display: block;
+
+    -moz-animation: leaflet-usermarker-pulsate 1.5s ease-in-out infinite;
+    -webkit-animation: leaflet-usermarker-pulsate 1.5s ease-in-out infinite;
+    border:1pt solid #fff;
+    /* make a circle */
+    -moz-border-radius:51px;
+    -webkit-border-radius:51px;
+    border-radius:51px;
+    /* multiply the shadows, inside and outside the circle */
+    -moz-box-shadow:inset 0 0 5px #06f, inset 0 0 5px #06f, inset 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f;
+    -webkit-box-shadow:inset 0 0 5px #06f, inset 0 0 5px #06f, inset 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f;
+    box-shadow:inset 0 0 5px #06f, inset 0 0 5px #06f, inset 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f;
+    /* set the ring's new dimension and re-center it */
+    height:61px!important;
+    margin:-14px 0 0 -14px;
+    width:61px!important;
+}
+
+.leaflet-usermarker-small i.pulse {
+    height: 30px !important;
+    width: 30px !important;
+    margin: -7px 0 0 -7px;
+}
+</style>
 
 </head>
 <body>
-  
-  <div id='data_switch' data-role='page'>
-    <div id='grade' >
-    </div>
-    <svg id='canvas'></svg>
-
+  <div id='map_holder'>
+    <div id='my_arbitrary_id'></div>    
   </div>
-
+  
+  
 </body>
 
-<script src="js/test.js"></script>
+<script >
+
+
+jQuery(document).ready(function() {
+  
+  venue_latlng = [36.158619, -95.99220514297485];
+  
+  
+  //satellite
+  // map = L.mapbox.map('my_arbitrary_id', 'jdungan.map-y7hj3ir7').setView(venue_latlng,16);
+  //200OK
+  map = L.mapbox.map('my_arbitrary_id', 'jdungan.map-rb58pj4k').setView(venue_latlng,16);
+
+  var distWatchID,
+      posOptions = {enableHighAccuracy: true},
+      user_marker = L.userMarker([0,0], {pulsing:true, accuracy:100,smallIcon:true}).addTo(map),
+      new_position = function(pos) {
+          var pos_accuracy = pos.coords.accuracy;
+          map.user_position = new L.LatLng(pos.coords.latitude, pos.coords.longitude);
+          user_marker.setLatLng(map.user_position);
+          user_marker.setAccuracy(pos_accuracy);
+          map.setView(map.user_position,18)
+
+      },
+      appPosFail = function (err) {
+          if (err){
+              console.warn('ERROR(' + err.code + '): ' + err.message);
+          }
+      };
+
+  distWatchID = navigator.geolocation.watchPosition(new_position, appPosFail, posOptions);       
+
+
+});
+  
+  
+</script>
 
 </html>
