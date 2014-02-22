@@ -25,10 +25,15 @@ jQuery(document).ready(function() {
           if (err){
               console.warn('ERROR(' + err.code + '): ' + err.message);
           }
-      };
-      var tulsaLoc = L.marker([36.1522, -95.9464]).addTo(map);
-
-  distWatchID = navigator.geolocation.watchPosition(new_position, appPosFail, posOptions);       
+      },
+      tIcon = L.Icon({
+     	iconUrl: 'img/Toilet.png',
+	   }),
+      tulsaLoc = L.marker([36.1522, -95.9464], {icon:tIcon}).addTo(map);
+		
+		
+		
+	  distWatchID = navigator.geolocation.watchPosition(new_position, appPosFail, posOptions);       
 
 
 });
