@@ -26,6 +26,7 @@ jQuery(document).ready(function() {
               console.warn('ERROR(' + err.code + '): ' + err.message);
           }
       };
+      var tulsaLoc = L.marker([36.1522, -95.9464]).addTo(map);
 
   distWatchID = navigator.geolocation.watchPosition(new_position, appPosFail, posOptions);       
 
