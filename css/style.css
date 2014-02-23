@@ -8,7 +8,12 @@ html, body {
 }
 
 #map { position:absolute; top:0; bottom:0; width:100%; }
-
+#button-wrapper {
+    position: absolute;
+    top: 80%;
+    width: 150px;
+    height: 40%;
+}
 
 /*leaflet user marker*/
 @-moz-keyframes leaflet-usermarker-pulsate {
