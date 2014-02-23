@@ -21,6 +21,26 @@ var uIcon = L.icon({
   popupAnchor: [-7, -5]
 });
 
+var mIcon = L.icon({
+  iconUrl: 'img/Toilet_M.png',
+    shadowUrl: 'img/Toilet_drop.png',
+    iconSize:     [30, 30], // size of the icon
+    shadowSize:   [16, 32], // size of the shadow
+    iconAnchor:   [22, 20], // point of the icon which will correspond to marker's location
+    shadowAnchor: [9, 22],  // the same for the shadow
+    popupAnchor:  [-7, -20] // point from which the popup should open relative to the iconAnchor
+})
+
+var fIcon = L.icon({
+  iconUrl: 'img/Toilet_F.png',
+    shadowUrl: 'img/Toilet_drop.png',
+    iconSize:     [30, 30], // size of the icon
+    shadowSize:   [16, 32], // size of the shadow
+    iconAnchor:   [22, 20], // point of the icon which will correspond to marker's location
+    shadowAnchor: [9, 22],  // the same for the shadow
+    popupAnchor:  [-7, -20] // point from which the popup should open relative to the iconAnchor
+})
+
 jQuery(document).ready(function() {
   
   venue_latlng = [36.1509, -95.9464];
