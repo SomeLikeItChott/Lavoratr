@@ -74,7 +74,24 @@ jQuery(document).ready(function() {
 		fireRef.on('child_added', function(snapshot) {
 	  		var latData = (snapshot.val()).latitude;
   			var longData = (snapshot.val()).longitude;
-  			L.marker([latData,longData], {icon: tIcon}).addTo(map);
+  			var tMark = L.marker([latData,longData], {icon: tIcon}).addTo(map);
+  			
+  			if((snapshot.val()).station == undefined)
+  				var sta = "";
+  			else
+  				var sta = "<br>changing station " + (snapshot.val()).station;
+  			
+  			var tPop = L.popup().setContent(
+					(snapshot.val()).nameOfLocation + "<br>" +
+					(snapshot.val()).gender + " " + (snapshot.val()).typeOfLocation +
+					"<br>rating: " + (snapshot.val()).quality +
+					"<br>sinks: " + (snapshot.val()).numSinks +
+					"<br>urinals: " + (snapshot.val()).numUrinals +
+					"<br>stalls: " + (snapshot.val()).numStalls +
+					"<br>handicapped accessible: " + (snapshot.val()).accessible +	
+					sta
+  				);
+  			tMark.bindPopup(tPop);
 		});
 		
 	  distWatchID = navigator.geolocation.watchPosition(new_position, appPosFail, posOptions);       
