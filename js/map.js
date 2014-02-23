@@ -50,11 +50,55 @@ jQuery(document).ready(function() {
       }
 
       var fireRef = new Firebase('https://lavoratr.firebaseio.com/');
-    fireRef.on('child_added', function(snapshot) {
-        var latData = (snapshot.val()).latitude;
-        var longData = (snapshot.val()).longitude;
-        L.marker([latData,longData], {icon: tIcon}).addTo(map);
-    });
+		fireRef.on('child_added', function(snapshot) {
+	  		var latData = (snapshot.val()).latitude;
+  			var longData = (snapshot.val()).longitude;
+  			var tMark = L.marker([latData,longData], {icon: tIcon}).addTo(map);
+  			
+  			if((snapshot.val()).nameOfLocation == undefined)
+  				var nam = "ERROR please contact admin<br>";
+  			else
+  				var nam = (snapshot.val()).nameOfLocation + "<br>";
+  			if((snapshot.val()).gender == undefined)
+  				var gen = "";
+  			else
+  				var gen = (snapshot.val()).gender;
+  			if((snapshot.val()).typeOfLocation == undefined)
+  				var loc = "<br>";
+  			else
+  				var loc = (snapshot.val()).typeOfLocation + "<br>";
+  			if((snapshot.val()).quality == undefined)
+  				var qua = "";
+  			else
+  				var qua = "<br>rating: " + (snapshot.val()).quality;
+  			if((snapshot.val()).numSinks == undefined)
+  				var sin = "";
+  			else
+  				var sin = "<br>sinks: " + (snapshot.val()).numSinks;
+  			if((snapshot.val()).numUrinals == undefined)
+  				var uri = "";
+  			else
+  				var uri = "<br>urinals: " + (snapshot.val()).numUrinals;
+  			if((snapshot.val()).numStalls == undefined)
+  				var sta = "";
+  			else
+  				var sta = "<br>stalls: " + (snapshot.val()).numStalls;
+  			if((snapshot.val()).accessible == undefined)
+  				var acc = "";
+  			else
+  				var acc = "<br>handicapped accessible: " + (snapshot.val()).accessible;
+  			
+  			var tPop = L.popup().setContent(
+					nam +
+					gen + " " + loc +
+					qua +
+					sin +
+					uri +
+					sta +
+					acc
+  				);
+  			tMark.bindPopup(tPop);
+		});
     
     distWatchID = navigator.geolocation.watchPosition(new_position, appPosFail, posOptions);
      
@@ -91,36 +135,6 @@ jQuery(document).ready(function() {
 //     }
 // }
 // //copypaste end
-       
-
-<<<<<<< HEAD
-		var fireRef = new Firebase('https://lavoratr.firebaseio.com/');
-		fireRef.on('child_added', function(snapshot) {
-	  		var latData = (snapshot.val()).latitude;
-  			var longData = (snapshot.val()).longitude;
-  			var tMark = L.marker([latData,longData], {icon: tIcon}).addTo(map);
-  			
-  			if((snapshot.val()).station == undefined)
-  				var sta = "";
-  			else
-  				var sta = "<br>changing station " + (snapshot.val()).station;
-  			
-  			var tPop = L.popup().setContent(
-					(snapshot.val()).nameOfLocation + "<br>" +
-					(snapshot.val()).gender + " " + (snapshot.val()).typeOfLocation +
-					"<br>rating: " + (snapshot.val()).quality +
-					"<br>sinks: " + (snapshot.val()).numSinks +
-					"<br>urinals: " + (snapshot.val()).numUrinals +
-					"<br>stalls: " + (snapshot.val()).numStalls +
-					"<br>handicapped accessible: " + (snapshot.val()).accessible +	
-					sta
-  				);
-  			tMark.bindPopup(tPop);
-		});
-		
-	  distWatchID = navigator.geolocation.watchPosition(new_position, appPosFail, posOptions);       
-=======
->>>>>>> c95884346ff2dac80484e2f12bfe1d93ef4aefbe
 
 //});
   
