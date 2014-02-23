@@ -27,18 +27,22 @@ jQuery(document).ready(function() {
               console.warn('ERROR(' + err.code + '): ' + err.message);
           }
       },
+     
+     //beginning of things that Sam added
       tIcon = L.icon({
-    iconUrl: 'js/img/Toilet.png',
-    shadowUrl: 'js/img/Toilet_drop.png',
+    iconUrl: 'img/Toilet.png',
+    shadowUrl: 'img/Toilet_drop.png',
     iconSize:     [30, 30], // size of the icon
-    shadowSize:   [16, 32], // size of the shadow
+    shadowSize:   [32, 32], // size of the shadow
     iconAnchor:   [22, 20], // point of the icon which will correspond to marker's location
-    shadowAnchor: [20, 20],  // the same for the shadow
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    shadowAnchor: [18, 27],  // the same for the shadow
+    popupAnchor:  [-7, -20] // point from which the popup should open relative to the iconAnchor
 }),
       tulsaLoc = L.marker([36.1522, -95.9464], {icon: tIcon}).addTo(map);
+                  
+      tulsaLoc.bindPopup("Pop up is <i>amazing</i>");
 		
-		
+		//end of things that Sam added
 		
 		
 	  distWatchID = navigator.geolocation.watchPosition(new_position, appPosFail, posOptions);       
