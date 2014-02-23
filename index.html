@@ -3,21 +3,31 @@
 <html>
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
 
   <script src= "http://code.jquery.com/jquery-1.10.2.min.js"></script>
-  <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
+  <script src= "http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
   <script src='//api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
   <script type="text/javascript" src="/leaflet.usermarker.js"></script>
 
-<link rel="stylesheet" type="text/css" href="css/style.css">
+
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" id='jQMnDColor' />
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
+  <link rel="stylesheet" type="text/css" href="css/style.css">
 
 </head>
 <body>
-  <div id='map_holder'>
-    <div id='my_arbitrary_id'></div>    
-  </div>
+  <div id='data_switch' data-role='page'>
   
   
+    <div id='map_holder'>
+      <div id='my_arbitrary_id'></div>    
+    </div>
+  
+  </div>  
+
 </body>
 
 <script src="js/map.js"></script>
