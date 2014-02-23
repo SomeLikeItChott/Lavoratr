@@ -30,6 +30,7 @@ Any more descriptive comments?  (Keep it as civil as possible please)
      <option></option>
      <option>Male</option>
      <option>Female</option>
+      <option>Both</option>
      <option>Family</option>
      <option>Unisex</option>
    </select>

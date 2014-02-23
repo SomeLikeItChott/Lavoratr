@@ -10,10 +10,6 @@
     padding: 20%;
     margin: 5%;
     overflow: hidden;
-	border-style:solid;
-	border-radius:15px;
-	border-width:7px;
-	box-shadow: 10px 10px 5px #888888;
 }
 /*leaflet user marker*/
 @-moz-keyframes leaflet-usermarker-pulsate {
@@ -47,14 +43,14 @@
 
 .leaflet-usermarker,
 .leaflet-usermarker-small {
-    width: 34px;
-    height: 34px;
-    background: url(../img/bluedot.png);
+    width: 20px;
+    height: 40px;
+    background: url(../img/peeman.png);
     background-size: 100%;
 }
 .leaflet-usermarker-small {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 40px;
 }
 
 .leaflet-usermarker i.pulse,
