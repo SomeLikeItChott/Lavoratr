@@ -1,16 +1,15 @@
+body {
+    padding: 0;
+    margin: 0;
+}
 
-#map_holder {
-    width: 100%;
+html, body {
     height: 100%;
-
 }
 
-  
-#my_arbitrary_id {
-    padding: 20%;
-    margin: 5%;
-    overflow: hidden;
-}
+#map { position:absolute; top:0; bottom:0; width:100%; }
+
+
 /*leaflet user marker*/
 @-moz-keyframes leaflet-usermarker-pulsate {
     from {

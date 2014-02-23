@@ -47,10 +47,7 @@ jQuery(document).ready(function() {
   
 
   
-  //satellite
-  // map = L.mapbox.map('my_arbitrary_id', 'jdungan.map-y7hj3ir7').setView(venue_latlng,16);
-  //200OK
-  map = L.mapbox.map('my_arbitrary_id', 'username44.hbhcfpoe').setView(venue_latlng,16);
+  map = L.mapbox.map('map', 'username44.hbhcfpoe').setView(venue_latlng,16);
 
   var distWatchID,
       posOptions = {enableHighAccuracy: true},
