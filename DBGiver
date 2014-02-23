@@ -84,7 +84,6 @@ How many sinks does the bathroom have?
   success = function(position){
     var myDataRef = new Firebase('https://lavoratr.firebaseio.com/');
 
- document.getElementById("").style.display="none";
 
     var nameOfLocation = $('#nolInput').val();
     var typeOfLocation = $('#typeLocation').val();
