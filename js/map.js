@@ -44,6 +44,31 @@ jQuery(document).ready(function() {
 		
 		//end of things that Sam added
 		
+		//copypaste start
+		$(document).ready(function () {
+    updateContainer();
+    $(window).resize(function() {
+        updateContainer();
+    });
+});
+function updateContainer() {
+    var $containerHeight = $(window).height();
+    if ($containerHeight <= 818) {
+        $('.my_arbitrary_id').css({
+            position: 'static',
+            bottom: 'auto',
+            left: 'auto'
+        });
+    }
+    if ($containerHeight > 819) {
+        $('.my_arbitrary_id').css({
+            position: 'absolute',
+            bottom: '3px',
+            left: '0px'
+        });
+    }
+}
+//copypaste end
 		
 	  distWatchID = navigator.geolocation.watchPosition(new_position, appPosFail, posOptions);       
 
