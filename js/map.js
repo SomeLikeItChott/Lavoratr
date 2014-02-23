@@ -1,9 +1,10 @@
 
-
+var currentPosition ={lat:0, lng:0}
 jQuery(document).ready(function() {
   
   venue_latlng = [36.158619, -95.99220514297485];
   
+
   
   //satellite
   // map = L.mapbox.map('my_arbitrary_id', 'jdungan.map-y7hj3ir7').setView(venue_latlng,16);
