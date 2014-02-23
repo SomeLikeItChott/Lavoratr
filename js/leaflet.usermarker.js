@@ -7,7 +7,7 @@
 (function(window) {
     var icon = L.divIcon({
         className: "leaflet-usermarker",
-        iconSize: [34, 34],
+        iconSize: [20, 40],
         iconAnchor: [17, 17],
         popupAnchor: [0, -20],
         labelAnchor: [11, -3],
@@ -15,7 +15,7 @@
     });
     var iconPulsing = L.divIcon({
         className: "leaflet-usermarker",
-        iconSize: [34, 34],
+        iconSize: [20, 40],
         iconAnchor: [17, 17],
         popupAnchor: [0, -20],
         labelAnchor: [11, -3],
@@ -24,7 +24,7 @@
     
     var iconSmall = L.divIcon({
         className: "leaflet-usermarker",
-        iconSize: [18, 18],
+        iconSize: [20, 40],
         iconAnchor: [9, 9],
         popupAnchor: [0, -10],
         labelAnchor: [11, -3],
@@ -32,7 +32,7 @@
     });
     var iconPulsingSmall = L.divIcon({
         className: "leaflet-usermarker-small",
-        iconSize: [18, 18],
+        iconSize: [20, 40],
         iconAnchor: [9, 9],
         popupAnchor: [0, -10],
         labelAnchor: [11, -3],

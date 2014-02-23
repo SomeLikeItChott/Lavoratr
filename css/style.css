@@ -47,14 +47,14 @@
 
 .leaflet-usermarker,
 .leaflet-usermarker-small {
-    width: 34px;
-    height: 34px;
-    background: url(../img/bluedot.png);
+    width: 20px;
+    height: 40px;
+    background: url(../img/peeman.png);
     background-size: 100%;
 }
 .leaflet-usermarker-small {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 40px;
 }
 
 .leaflet-usermarker i.pulse,
