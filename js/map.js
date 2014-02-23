@@ -28,7 +28,7 @@ jQuery(document).ready(function() {
           }
       },
      
-     //beginning of things that Sam added
+      //beginning of things that Sam added
       tIcon = L.icon({
     iconUrl: 'img/Toilet.png',
     shadowUrl: 'img/Toilet_drop.png',
@@ -37,38 +37,45 @@ jQuery(document).ready(function() {
     iconAnchor:   [22, 20], // point of the icon which will correspond to marker's location
     shadowAnchor: [9, 22],  // the same for the shadow
     popupAnchor:  [-7, -20] // point from which the popup should open relative to the iconAnchor
-}),
-      tulsaLoc = L.marker([36.1522, -95.9464], {icon: tIcon}).addTo(map);
-                  
-      tulsaLoc.bindPopup("Pop up is <i>amazing</i>");
-		
-		//end of things that Sam added
-		
-		//copypaste start
-		$(document).ready(function () {
-    updateContainer();
-    $(window).resize(function() {
-        updateContainer();
-    });
 });
-function updateContainer() {
-    var $containerHeight = $(window).height();
-    if ($containerHeight <= 818) {
-        $('.my_arbitrary_id').css({
-            position: 'static',
-            bottom: 'auto',
-            left: 'auto'
-        });
-    }
-    if ($containerHeight > 819) {
-        $('.my_arbitrary_id').css({
-            position: 'absolute',
-            bottom: '3px',
-            left: '0px'
-        });
-    }
-}
-//copypaste end
+//       tulsaLoc = L.marker([36.1522, -95.9464], {icon: tIcon}).addTo(map);
+//                   
+//       tulsaLoc.bindPopup("Pop up is <i>amazing</i>");
+// 		
+// 		//end of things that Sam added
+		
+// 		//copypaste start
+// 		$(document).ready(function () {
+//     updateContainer();
+//     $(window).resize(function() {
+//         updateContainer();
+//     });
+// });
+// function updateContainer() {
+//     var $containerHeight = $(window).height();
+//     if ($containerHeight <= 818) {
+//         $('.my_arbitrary_id').css({
+//             position: 'static',
+//             bottom: 'auto',
+//             left: 'auto'
+//         });
+//     }
+//     if ($containerHeight > 819) {
+//         $('.my_arbitrary_id').css({
+//             position: 'absolute',
+//             bottom: '3px',
+//             left: '0px'
+//         });
+//     }
+// }
+// //copypaste end
+
+		var fireRef = new Firebase('https://lavoratr.firebaseio.com/');
+		fireRef.on('child_added', function(snapshot) {
+	  		var latData = (snapshot.val()).latitude;
+  			var longData = (snapshot.val()).longitude;
+  			L.marker([latData,longData], {icon: tIcon}).addTo(map);
+		});
 		
 	  distWatchID = navigator.geolocation.watchPosition(new_position, appPosFail, posOptions);       
 

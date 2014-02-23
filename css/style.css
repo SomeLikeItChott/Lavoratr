@@ -10,10 +10,6 @@
     padding: 20%;
     margin: 5%;
     overflow: hidden;
-	border-style:solid;
-	border-radius:15px;
-	border-width:7px;
-	box-shadow: 10px 10px 5px #888888;
 }
 /*leaflet user marker*/
 @-moz-keyframes leaflet-usermarker-pulsate {
