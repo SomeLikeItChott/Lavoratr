@@ -1,0 +1,60 @@
+<html>
+<head>
+  <script src='https://cdn.firebase.com/v0/firebase.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+
+</head>
+<body>
+ Name of Location:
+ <input type='text' id='nolInput' placeholder='Name of Location'>
+ <form>
+   What kind of location?
+   <select id="typeLocation" onchange="location()">
+     <option></option>
+     <option>Bathroom</option>
+     <option>Restaurant</option>  
+     <option>Gas Station</option>
+     <option>Store</option>
+   </select>
+ </form>
+
+ <input  type="button" id="Submit" value="Submit" onclick="pushFunction()"; />
+ <script>
+
+
+
+ function pushFunction(){
+  var locale;
+  if(!navigator.geolocation){
+    output.innerHTML = "<p>Geolocation is not supported by your browser.</p>";
+    return;
+  }
+  success = function(position){
+    var myDataRef = new Firebase('https://lavoratr.firebaseio.com/');
+
+
+    var nameOfLocation = $('#nolInput').val();
+    var typeOfLocation = $('#typeLocation').val();
+         // map.user_position = new L.LatLng(pos.coords.latitude, pos.coords.longitude);
+
+         var lat = position.coords.latitude;
+         var lng = position.coords.longitude;
+
+         myDataRef.push({nameOfLocation: nameOfLocation, typeOfLocation: typeOfLocation, latitude: lat, longitude: lng});
+         $('#typeLocation').val('');
+
+       };
+
+       error = function(err){
+        console.warn(err.code + " " + err.message);
+      };
+      navigator.geolocation.getCurrentPosition(success, error);
+
+
+
+    };
+
+    
+    </script>
+  </body>
+  </html>
