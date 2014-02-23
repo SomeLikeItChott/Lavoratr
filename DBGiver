@@ -9,6 +9,10 @@
  Name of Location:
  <input type='text' id='nolInput' placeholder='Name of Location'>
 
+ Location in Building:
+ <input type='text' id='locInBuilding' placeholder='Location in Building'>
+
+
  <form>
    What kind of location?
    <select id="typeLocation" onchange="location()">
@@ -86,6 +90,7 @@ How many sinks does the bathroom have?
     var myDataRef = new Firebase('https://lavoratr.firebaseio.com/');
 
 
+    var locationInBuilding = $('#locInBuilding').val();
     var nameOfLocation = $('#nolInput').val();
     var typeOfLocation = $('#typeLocation').val();
     var quality = $('#Quality').val();
@@ -99,7 +104,7 @@ How many sinks does the bathroom have?
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
 
-         myDataRef.push({nameOfLocation: nameOfLocation, comment: commentBox, numbStalls: numStalls, numUrinals: numUrinals, numSinks: numSinks, gender: gender, station: station, accesible: accesible, typeOfLocation: typeOfLocation, quality: quality, latitude: lat, longitude: lng});
+         myDataRef.push({nameOfLocation: nameOfLocation, locationInBuilding: locationInBuilding, comment: commentBox, numbStalls: numStalls, numUrinals: numUrinals, numSinks: numSinks, gender: gender, station: station, accesible: accesible, typeOfLocation: typeOfLocation, quality: quality, latitude: lat, longitude: lng});
          $('#typeLocation').val('');
 
        };
