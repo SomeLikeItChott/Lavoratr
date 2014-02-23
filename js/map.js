@@ -70,7 +70,16 @@ jQuery(document).ready(function() {
 		fireRef.on('child_added', function(snapshot) {
 	  		var latData = (snapshot.val()).latitude;
   			var longData = (snapshot.val()).longitude;
-  			var tMark = L.marker([latData,longData], {icon: tIcon}).addTo(map);
+        if ((snapshot.val()).gender == "Male")
+          var tMark = L.marker([latData,longData], {icon: mIcon}).addTo(map);
+        else
+        {
+          if ((snapshot.val()).gender == "Female")
+            var tMark = L.marker([latData,longData], {icon: fIcon}).addTo(map);
+          else
+            var tMark = L.marker([latData,longData], {icon: tIcon}).addTo(map);
+        }
+  			
   			
   			if((snapshot.val()).nameOfLocation == undefined)
   				var nam = "ERROR please contact admin<br>";
