@@ -1,0 +1,125 @@
+<html>
+<head>
+  <script src='https://cdn.firebase.com/v0/firebase.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+
+</head>
+<body>
+
+ Name of Location:
+ <input type='text' id='nolInput' placeholder='Name of Location'>
+
+ Location in Building:
+ <input type='text' id='locInBuilding' placeholder='Location in Building'>
+
+
+ <form>
+   What kind of location?
+   <select id="typeLocation" onchange="location()">
+     <option></option>
+     <option>Bathroom</option>
+   </select>
+ </form>
+
+ How would you rate the quality of this bathroom? 
+<div>Low <input type="range" id="Quality" name="points" min="1" max="10">High</div>
+
+Any more descriptive comments?  (Keep it as civil as possible please)
+<div><textarea name="commentBox" id="commentBox" cols="40" rows="5"></textarea></div>
+
+
+  <form>
+   What gender is this bathroom intended for?
+   <select id="typeGender" onchange="gender()">
+     <option></option>
+     <option>Male</option>
+     <option>Female</option>
+      <option>Both</option>
+     <option>Family</option>
+     <option>Unisex</option>
+   </select>
+
+
+<div id = "nonEssential">
+   <div>Is this bathroom wheelchair accesible?
+   <input type="checkbox" id="isAccesible" name="disabledAccesible" value="isItAccesible" />
+   </div>
+
+   <div>Does this bathroom have a baby changing station?
+   <input type="checkbox" id="hasStation" name="babyStation" value="doesHaveStation" />
+   </div>
+
+
+ </form>
+
+
+<form>
+
+<div>
+How many stalls does the bathroom have?
+  <input type="number" id="stallNumber" name="numberOfStalls" min="1" max="20">
+</div>
+
+<div>
+How many urinals does the bathroom have?
+  <input type="number" id="urinalNumber" name="numberOfUrinals" min="1" max="20">
+</div>
+
+<div>
+How many sinks does the bathroom have?
+  <input type="number" id="sinkNumber" name="numberOfSinks" min="1" max="20">
+</div>
+
+
+
+</form>
+</div>
+ <input  type="button" id="Submit" value="Submit" onclick="pushFunction()"; />
+
+ <script>
+
+
+
+ function pushFunction(){
+  var locale;
+  if(!navigator.geolocation){
+    output.innerHTML = "<p>Geolocation is not supported by your browser.</p>";
+    return;
+  }
+  success = function(position){
+    var myDataRef = new Firebase('https://lavoratr.firebaseio.com/');
+
+
+    var locationInBuilding = $('#locInBuilding').val();
+    var nameOfLocation = $('#nolInput').val();
+    var typeOfLocation = $('#typeLocation').val();
+    var quality = $('#Quality').val();
+    var gender = $('#typeGender').val();
+    var accesible = $('#isAccesible').is(':checked')
+    var station = $('#hasStation').is(':checked')
+    var commentBox = $('#commentBox').val();
+    var numStalls = $('#stallNumber').val();
+    var numUrinals = $('#urinalNumber').val();
+    var numSinks = $('#sinkNumber').val();
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
+
+         myDataRef.push({nameOfLocation: nameOfLocation, locationInBuilding: locationInBuilding, comment: commentBox, numbStalls: numStalls, numUrinals: numUrinals, numSinks: numSinks, gender: gender, station: station, accesible: accesible, typeOfLocation: typeOfLocation, quality: quality, latitude: lat, longitude: lng});
+         $('#typeLocation').val('');
+
+       };
+
+       error = function(err){
+        console.warn(err.code + " " + err.message);
+      };
+      
+      navigator.geolocation.getCurrentPosition(success, error);
+
+
+
+    };
+
+    
+    </script>
+  </body>
+  </html>

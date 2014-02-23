@@ -48,7 +48,7 @@ jQuery(document).ready(function() {
 
   
   map = L.mapbox.map('map', 'username44.hbhcfpoe').setView(venue_latlng,16);
-
+  
   var distWatchID,
       posOptions = {enableHighAccuracy: true},
       user_marker = L.marker([0,0], {icon: uIcon}).addTo(map),
@@ -104,6 +104,9 @@ jQuery(document).ready(function() {
   				var acc = "";
   			else
   				var acc = "<br>handicapped accessible: " + (snapshot.val()).accessible;
+  				
+  			var form = "<form><input type='number' id='rated' name='numberOfSinks' min='1' max='10'></input></form>";
+  			var quality = $('#Quality').val();
   			
   			var tPop = L.popup().setContent(
 					nam +
@@ -112,7 +115,8 @@ jQuery(document).ready(function() {
 					sin +
 					uri +
 					sta +
-					acc
+					acc +
+					"<br>" + form
   				);
   			tMark.bindPopup(tPop);
 		});
