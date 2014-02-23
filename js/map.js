@@ -2,13 +2,13 @@
 
 jQuery(document).ready(function() {
   
-  venue_latlng = [36.158619, -95.99220514297485];
+  venue_latlng = [36.1509, -95.9464];
   
   
   //satellite
   // map = L.mapbox.map('my_arbitrary_id', 'jdungan.map-y7hj3ir7').setView(venue_latlng,16);
   //200OK
-  map = L.mapbox.map('my_arbitrary_id', 'jdungan.map-rb58pj4k').setView(venue_latlng,16);
+  map = L.mapbox.map('my_arbitrary_id', 'username44.hbhcfpoe').setView(venue_latlng,16);
 
   var distWatchID,
       posOptions = {enableHighAccuracy: true},
