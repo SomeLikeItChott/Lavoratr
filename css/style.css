@@ -1,16 +1,19 @@
 
 #map_holder {
-    width: 1000px;
-    height: 1000px;
-    overflow: hidden;
+    width: 100%;
+    height: 100%;
+
 }
 
   
 #my_arbitrary_id {
-    padding: 1%;
-    width: 100%;
-    height: 100%;
+    padding: 20%;
+    margin: 5%;
     overflow: hidden;
+	border-style:solid;
+	border-radius:15px;
+	border-width:7px;
+	box-shadow: 10px 10px 5px #888888;
 }
 /*leaflet user marker*/
 @-moz-keyframes leaflet-usermarker-pulsate {
@@ -46,7 +49,7 @@
 .leaflet-usermarker-small {
     width: 34px;
     height: 34px;
-    background: url(img/bluedot.png);
+    background: url(../img/bluedot.png);
     background-size: 100%;
 }
 .leaflet-usermarker-small {
