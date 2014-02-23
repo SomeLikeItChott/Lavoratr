@@ -48,7 +48,7 @@ jQuery(document).ready(function() {
 
   
   map = L.mapbox.map('map', 'username44.hbhcfpoe').setView(venue_latlng,16);
-
+    
   var distWatchID,
       posOptions = {enableHighAccuracy: true},
       user_marker = L.marker([0,0], {icon: uIcon}).addTo(map),
